@@ -3,6 +3,7 @@ import 'package:movies_app/src/models/pelicula_model.dart';
 import 'package:movies_app/src/providers/peliculas_provider.dart';
 
 import 'package:movies_app/src/widgets/card_swiper_widget.dart';
+import 'package:movies_app/src/widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
   //const HomePage({super.key});
@@ -25,8 +26,10 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            _swiperTarjetas()
+            _swiperTarjetas(),
+            _footer(context)
           ],
         ),
       ), 
@@ -45,7 +48,7 @@ class HomePage extends StatelessWidget {
           return CardSwiper(peliculas: snapshot.data??[]);
         } else {
           return Container(
-            height: 400.0,
+            height: 300.0,
             child: const Center(
               child: CircularProgressIndicator()
             )
@@ -54,4 +57,32 @@ class HomePage extends StatelessWidget {
       },
     );
   }
+
+  Widget _footer(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text('Populares', style: Theme.of(context).textTheme.subtitle1)
+          ),
+          SizedBox(height: 5.0),
+          FutureBuilder(
+            future: peliculasProvider.getPopulares(),
+            builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> snapshot) {
+              // snapshot.data!.forEach((p) => print(p.title));
+              if(snapshot.hasData){
+                return MovieHorizontal(peliculas: snapshot.data??[]);
+              }else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
 }
