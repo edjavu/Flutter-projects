@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:movies_app/src/pages/home_page.dart';
+import 'package:movies_app/src/pages/pelicula_datealle.dart';
 
 void main() { 
   HttpOverrides.global = MyHttpOverrides();
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
       title: 'Peliculas',
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => HomePage()
+        '/': (BuildContext context) => HomePage(),
+        'detalle' : (BuildContext context) => PeliculaDetalle(),
       },
     );
   }

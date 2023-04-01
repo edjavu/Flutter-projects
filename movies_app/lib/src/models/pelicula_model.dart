@@ -74,4 +74,12 @@ class Pelicula {
     }
   }
 
+  getBackgroundImg() {
+    if(posterPath == null){
+      return 'https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+    }
+  }
+
 }
