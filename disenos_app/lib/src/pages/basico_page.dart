@@ -9,43 +9,57 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          _crearImagen(),
-          _crearTitulo(),
-          _crearAcciones(),
-          _crearTexto()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _crearImagen(),
+            _crearTitulo(),
+            _crearAcciones(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto()
+          ],
+        )
       ),
     );
   }
 
   Widget _crearImagen() {
-    return  const Image(
-              image: NetworkImage('https://gepphotoclub.com/wp-content/uploads/2021/07/2021-07-25_Ed-Featured.jpg')
-            );
+    return Container(
+          width: double.infinity,
+          child: const Image(
+                    image: NetworkImage('https://gepphotoclub.com/wp-content/uploads/2021/07/2021-07-25_Ed-Featured.jpg'),
+                    height: 200.0,
+                    fit: BoxFit.cover,
+                  ),
+        );
   }
 
   Widget _crearTitulo() {
-    return  Container(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Lago congelado', style: estiloTitulo),
-                      const SizedBox(height: 7.0),
-                      Text('Lago en Suecia', style: estiloSubtitulo)
-                    ],
+    return SafeArea(
+      child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text('Lago congelado', style: estiloTitulo),
+                        const SizedBox(height: 7.0),
+                        Text('Lago en Suecia', style: estiloSubtitulo)
+                      ],
+                    ),
                   ),
-                ),
-                const Icon(Icons.star, color: Colors.red, size: 30.0),
-                const Text('41', style: TextStyle(fontSize: 20.0))
-              ],
+                  const Icon(Icons.star, color: Colors.red, size: 30.0),
+                  const Text('41', style: TextStyle(fontSize: 20.0))
+                ],
+              ),
             ),
-          );
+    );
   }
 
   Widget _crearAcciones() {
@@ -70,10 +84,12 @@ class BasicoPage extends StatelessWidget {
   }
 
   Widget _crearTexto() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-      child: const Text('Tsjkdnjsnfkjsnfjnsjnsjdknsjdnjsdnjsndjnsdsdkjdbjsdbkjsbdsbdjbsjdbsjdbjskbdkjsbdkjbskjdbsjkdbjksbdsjdbkjsdbjksbdjsbdkjsdbkjsdbkjdsbjdskbjdksbdjkbdsjbjsd',
-                        textAlign: TextAlign.justify)
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+        child: const Text('Tsjkdnjsnfkjsnfjnsjnsjdknsjdnjsdnjsndjnsdsdkjdbjsdbkjsbdsbdjbsjdbsjdbjskbdkjsbdkjbskjdbsjkdbjksbdsjdbkjsdbjksbdjsbdkjsdbkjsdbkjdsbjdskbjdksbdjkbdsjbjsd',
+                          textAlign: TextAlign.justify)
+      ),
     );
   }
 }
